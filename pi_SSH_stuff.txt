@@ -1,0 +1,90 @@
+***Raspberry Pi and/or SSH stuff***
+
+Initial config CLI thing:
+	sudo raspi-config
+
+User mod shit
+New user:
+	sudo adduser stuart
+	sudo usermod -a -G dialout stuart
+Add new user to sudoers file 
+	sudo visudo
+	Copy root * line and replace with stuart
+
+change password
+	passwd
+	or
+	passwd $USER
+
+Change Hostname
+	sudo vim /etc/hostname
+	change it
+	sudo vim /etc/hosts
+	change it too
+	sudo reboot
+
+*find local IPs:
+	nmap -sP 192.168.1.*
+
+* Hard drive auto mount setup
+format the hard drive(s) then add this line to: /etc/fstab
+	LABEL=GROTTO  /grotto  ext4  defaults,nofail  0  2
+replace grotto with whatever, ext4 with the format. nofail so if it fails the pi still boots up
+
+
+**Static IP Setup:
+	sudo ifconfig
+find current IP, Broadcast Range, subnet Mask
+i.e.
+curr IP = 192.168.1.60
+broadcast range = 192.168.1.255
+subnet mask = 255.255.255.0
+
+	sudo route -n
+find gateway, destination
+i.e.
+gateway = 192.168.1.1
+destination = 192.168.1.0
+
+edit config file 
+
+	sudo vi /etc/network/interfaces
+
+change "iface eth0 inet dhcp[or manual]"
+to 
+iface eth0 inet static
+address 192.168.1.61
+netmask 255.255.255.0
+network 192.168.1.0
+broadcast 192.168.1.255
+gateway 192.168.1.1
+
+Where:
+iface eth0 inet static
+address [your chosen IP address]
+netmask [your netmask]
+network [your destination]
+broadcast [your broadcast range]
+gateway [your gateway]
+
+**
+
+Stuff to install
+	vim
+	apache2
+	build-essential
+	fortune
+	cowsay
+	python-setuptools 
+	python-dev
+	sudo easy_install pip
+	sudo pip install --upgrade virtualenv
+	sudo pip install web.py
+	apache2
+
+Give apache access to shit by adding www-data to the 'dialout' group
+	sudo usermod -a -G dialout www-data
+
+not related but:
+    notify-send -i <path to pic> "big message" "small message"
+is good times

@@ -1,0 +1,17 @@
+Programs to install during Ubuntu setup:
+From apt-get:
+	Inkscape
+	texlive-full
+	vim-gnome
+	codeblocks
+	build-essential
+	okular
+	gparted
+	Therion
+	fortune
+	cowsay
+
+Manually:
+	Chrome
+	Arduino IDE
+	?Anaconda

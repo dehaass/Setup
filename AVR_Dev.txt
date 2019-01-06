@@ -1,0 +1,17 @@
+The following sets of commands should get Ubuntu set up to build/make hex files and then use Dfu-Programmer to upload them.
+
+
+sudo apt-get update
+
+sudo apt-get install gcc # c compiler download
+sudo apt-get install build-essential # Packages which are considered essential for building Debian packages
+
+sudo apt-get install gcc-avr   # A port of GCC to AVR target processor
+sudo apt-get install gdb-avr   # AVR GNU debugger
+sudo apt-get install binutils-avr #low-level utilities for building & manipulating object files
+sudo apt-get install avr-libc # AVR Library files
+sudo apt-get install avrdude # command-line program for programming AVR chips.
+
+sudo apt-get install libusb-1.0-0-dev #Needed for dfu-programmer(?)
+
+sudo apt-get install dfu-programmer # Used for the uploading
